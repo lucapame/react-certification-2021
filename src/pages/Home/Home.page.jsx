@@ -7,9 +7,9 @@ function HomePage() {
     <Fragment>
       <div className="container ">
         <div className="header-card card my-5 ">
-          <h1 className="fw-bold m-0 display-1 text-white">Discover</h1>
-          <p className="text-white">
-            Find the videos that you love and probably will blow your mind.
+          <h1 className="fw-bold mb-2 display-1 text-white">Hey there!</h1>
+          <p className="text-white h4 ">
+            Find the videos that you love and discover the one that will blow your mind.
           </p>
         </div>
 

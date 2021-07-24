@@ -6,13 +6,10 @@ const VideoCardFlat = (props) => {
   const { snippet } = props;
   return (
     <Fragment>
-      <Link
-        to="/player"
-        className="d-flex align-items-center video-card-flat decoration-none"
-      >
+      <Link to="/player" className="d-flex video-card-flat decoration-none">
         <img src={snippet.thumbnails.medium.url} className="card-img-top" alt="..." />
         <div className="ms-2 ">
-          <p className=" m-0">{snippet.title}</p>
+          <p className="h5 m-0">{snippet.title}</p>
           <p className="m-0 text-lead text-xs">
             {snippet.channelTitle} &bull; {formatter.formatDate(snippet.publishTime)}
           </p>

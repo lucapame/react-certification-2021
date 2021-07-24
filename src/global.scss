@@ -1,14 +1,14 @@
 /*----------------------Custom Variables-----------------------------------*/
 // Create your own map
-$custom-colors: (
-  'bg-black': #121212,
+$custom-colors: ('bg-black': #121212,
   'bg-black-contrast': #353535,
   'bg-light': #fff,
   'bg-light-contrast': rgb(206, 206, 206),
   'spring-green': #ff7d00,
 );
 
-$font-family-sans-serif: 'Rubik', sans-serif;
+$font-family-sans-serif: 'Rubik',
+sans-serif;
 
 $border-radius: 0.7rem;
 $border-radius-custom: 0.5rem;
@@ -147,6 +147,18 @@ body {
   transition: all 0.2s;
 }
 
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: inherit;
+  text-decoration: none;
+  color: var(--amber-sae-ece);
+}
+
+
 .theme-toggle:hover {
   transition: all 0.2s;
   background-color: --pakistan-green;
@@ -193,7 +205,6 @@ body {
 
 .header-card {
   padding: 3em;
-  background: rgb(202, 63, 251);
   background: linear-gradient(130deg, rgba(202, 63, 251, 1) 0%, rgba(252, 105, 0, 1) 80%);
 
   &.bg-illustration-1::after {

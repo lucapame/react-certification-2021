@@ -9,7 +9,7 @@ const VideoPlayer = () => {
     <Fragment>
       <div className="container-fluid h-100">
         <div className="row mt-4">
-          <div className="col-12 col-md-9">
+          <div className="col-12  col-lg-9">
             <div className="video-payer">
               <iframe
                 title="Doja Cat - Kiss Me More (Official Video) ft. SZA"
@@ -21,7 +21,7 @@ const VideoPlayer = () => {
               Doja Cat - Vevo &bull; {formatter.formatDate('2019-03-05T03:52:55Z')}
             </p>
           </div>
-          <div className="col-12 col-md-3 video-list-contained mt-4 mt-md-0">
+          <div className="col-12 col-lg-3 video-list-contained mt-4 mt-md-0">
             <p className="fw-bold">More like this</p>
             {getVideosList().items.map((video) => {
               return (
