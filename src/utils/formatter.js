@@ -6,4 +6,4 @@ class Formatter {
   };
 }
 
-module.exports = new Formatter();
+export default new Formatter();
