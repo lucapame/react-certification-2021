@@ -5,15 +5,16 @@ import Avatar from '../Avatar/avatar.component';
 const NavBar = ({ darkMode, setDarkMode }) => {
   return (
     <Fragment>
-      <nav className="navbar  sticky-top" data-theme={darkMode ? 'dark' : 'light'}>
-        <div className=" container-fluid  align-items-center justify-content-between">
-          <div className="head d-none d-md-block">
-            <Link to="/" className="navbar-brand h3 fw-bold  ">
+      <nav
+        className=" pt-3 sticky-top navbar-custom"
+        data-theme={darkMode ? 'dark' : 'light'}
+      >
+        <div className="d-flex container-fluid  align-items-center justify-content-between">
+          <div className="head d-flex ">
+            <Link to="/" className="navbar-brand h3 fw-bold d-none d-md-block">
               wavel.
             </Link>
-          </div>
-          <div className="head  d-block d-md-none">
-            <Link to="/" className="navbar-brand h3 m-0 fw-bold  ">
+            <Link to="/" className="navbar-brand h3 fw-bold d-block d-md-none ">
               w.
             </Link>
           </div>
@@ -42,14 +43,14 @@ const NavBar = ({ darkMode, setDarkMode }) => {
                 onClick={setDarkMode}
               >
                 {darkMode ? (
-                  <div className="d-flex align-items-center">
-                    <i className="fas fa-sun" />
-                    <p className="m-0 d-none ms-2  d-md-block">Light Mode</p>
+                  <div className="d-flex  align-items-center">
+                    <i className="fas fa-sun " />
+                    <p className="m-0 d-none d-md-block ms-2">Light Mode</p>
                   </div>
                 ) : (
-                  <div className="d-flex align-items-center">
-                    <i className="fas fa-moon" />
-                    <p className="m-0 d-none  ms-2 d-md-block">Dark Mode</p>
+                  <div className="d-flex   align-items-center">
+                    <i className="fas fa-moon " />
+                    <p className="m-0 d-none d-md-block ms-2">Dark Mode</p>
                   </div>
                 )}
               </button>
