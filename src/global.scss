@@ -1,0 +1,257 @@
+/*----------------------Custom Variables-----------------------------------*/
+// Create your own map
+$custom-colors: ('bg-black': #121212,
+  'bg-black-contrast': #353535,
+  'bg-light': #fff,
+  'bg-light-contrast': rgb(206, 206, 206),
+  'spring-green': #ff7d00,
+);
+
+$font-family-sans-serif: 'Rubik',
+sans-serif;
+
+$border-radius: 0.7rem;
+$border-radius-custom: 0.5rem;
+$border-radius-lg: 0.5rem;
+$border-radius-sm: 0.3rem;
+
+$enable-responsive-font-sizes: true;
+
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap');
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+:root {
+  --bg-color: #f4f4f4;
+  --bg-contrast-color: #e3e3e3;
+  --text-color: #000;
+  --text-lead: #848484;
+
+  --brand-purple: #ca3ffb;
+  --amber-sae-ece: #ff7d00ff;
+}
+
+[data-theme='dark'] {
+  --bg-color: #1f1f1f;
+  --bg-contrast-color: #39393b;
+  --text-color: #fff;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+.App {
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  transition: all 0.2s;
+}
+
+* {
+  color: var(--text-color);
+  transition: all 0.2s;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: var(--bg-contrast-color);
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: $border-radius;
+  background-color: var(--text-lead);
+  transition: 0.3s;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  border-radius: 10px;
+  background-color: var(--amber-sae-ece);
+  transition: 0.3s;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: $border-radius;
+  background-color: var(--bg-contrast-color);
+}
+
+.navbar-brand {
+  color: var(--text-color);
+  transition: all ease-in-out 0.2s;
+}
+
+.navbar-brand:hover {
+  background: -webkit-linear-gradient(rgba(202, 63, 251, 1), rgba(252, 105, 0, 1));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all ease-in-out 0.2s;
+}
+
+.decoration-none {
+  text-decoration: none;
+}
+
+input,
+select,
+textarea {
+  color: var(--text-color) !important;
+  ;
+}
+
+textarea:focus,
+input:focus {
+  color: var(--text-color) !important;
+  ;
+}
+
+.input-group {
+  &.search {
+    padding: 0.2em;
+    background-color: var(--bg-contrast-color);
+    border-radius: 100px !important;
+  }
+
+  input {
+    border: none;
+    background-color: transparent;
+    border-radius: 100px !important;
+  }
+
+  input:focus {
+    border: none;
+    background-color: transparent;
+    border-radius: 100px !important;
+  }
+
+  span {
+    background-color: transparent;
+    border-radius: 100px !important;
+  }
+
+  .input-group-text {
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .input-group-text:hover {
+    background-color: map-get($map: $theme-colors, $key: spring-green);
+    transition: all 0.2s;
+  }
+}
+
+.theme-toggle {
+  transition: all 0.2s;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: inherit;
+  text-decoration: none;
+  color: var(--amber-sae-ece);
+}
+
+.theme-toggle:hover {
+  transition: all 0.2s;
+  background-color: --pakistan-green;
+  color: #000;
+}
+
+.video-card {
+  border: none;
+  background-color: var(--bg-color);
+  cursor: pointer;
+
+  .card-lead {
+    color: var(--text-lead);
+  }
+
+  .card-img-top {
+    object-fit: cover;
+    border-radius: $border-radius;
+    max-height: 172px;
+  }
+}
+
+.video-card:hover {
+  border: none;
+  transform: scale(1.1);
+  z-index: 999;
+}
+
+.video-card-flat {
+  cursor: pointer;
+
+  .card-img-top {
+    border-radius: $border-radius;
+    width: 40%;
+    height: 50%;
+    object-fit: cover;
+    max-height: 80px;
+    max-width: 40%;
+  }
+}
+
+.video-card-flat:hover {
+  background-color: var(--bg-contrast-color);
+}
+
+.text-xs {
+  font-size: small;
+}
+
+.header-card {
+  padding: 3em;
+  background: linear-gradient(130deg, rgba(202, 63, 251, 1) 0%, rgba(252, 105, 0, 1) 80%);
+
+  &.bg-illustration-1::after {
+    content: url('/images/avatar.png');
+    top: 0;
+
+    bottom: 0;
+    right: 1%;
+    position: absolute;
+    z-index: 1;
+  }
+}
+
+.video-payer {
+  position: relative;
+  padding-bottom: 50.25%;
+  /* 16:9 */
+  padding-top: 15px;
+  height: 0;
+}
+
+.video-payer iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95%;
+  border-radius: $border-radius;
+}
+
+.text-lead {
+  color: var(--text-lead);
+}
+
+.video-list-contained {
+  height: 89vh;
+  overflow-y: scroll;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 800px) {
+  .bg-illustration-1::after {
+    display: none;
+    top: 0;
+  }
+}
