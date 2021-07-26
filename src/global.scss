@@ -1,14 +1,14 @@
 /*----------------------Custom Variables-----------------------------------*/
 // Create your own map
-$custom-colors: (
-  'bg-black': #121212,
+$custom-colors: ('bg-black': #121212,
   'bg-black-contrast': #353535,
   'bg-light': #fff,
   'bg-light-contrast': rgb(206, 206, 206),
   'spring-green': #ff7d00,
 );
 
-$font-family-sans-serif: 'Rubik', sans-serif;
+$font-family-sans-serif: 'Rubik',
+sans-serif;
 
 $border-radius: 0.7rem;
 $border-radius-custom: 0.5rem;
@@ -25,6 +25,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 :root {
   --bg-color: #f4f4f4;
+  --bg-transparent-color: #f4f4f480;
   --bg-contrast-color: #e3e3e3;
   --text-color: #000;
   --text-lead: #848484;
@@ -35,6 +36,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 [data-theme='dark'] {
   --bg-color: #1f1f1f;
+  --bg-transparent-color: #1f1f1f7c;
   --bg-contrast-color: #39393b;
   --text-color: #fff;
 }
@@ -76,6 +78,13 @@ body {
 *::-webkit-scrollbar-track {
   border-radius: $border-radius;
   background-color: var(--bg-contrast-color);
+}
+
+.navbar {
+
+  background: var(--bg-color);
+  border-radius: $border-radius;
+
 }
 
 .navbar-brand {

@@ -5,7 +5,7 @@ import Avatar from '../Avatar/avatar.component';
 const NavBar = ({ darkMode, setDarkMode }) => {
   return (
     <Fragment>
-      <nav className=" pt-3 " data-theme={darkMode ? 'dark' : 'light'}>
+      <nav className="navbar mx-2 sticky-top" data-theme={darkMode ? 'dark' : 'light'}>
         <div className="d-flex container-fluid  align-items-center justify-content-between">
           <div className="head d-flex ">
             <Link to="/" className="navbar-brand h3 fw-bold ">

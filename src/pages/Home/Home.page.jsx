@@ -6,7 +6,7 @@ function HomePage() {
   return (
     <Fragment>
       <div className="container ">
-        <div className="header-card card my-5 ">
+        <div className="header-card card my-4 ">
           <h1 className="fw-bold mb-2 display-1 text-white">Hey there!</h1>
           <p className="text-white h4 ">
             Find the videos that you love and discover the one that will blow your mind.
