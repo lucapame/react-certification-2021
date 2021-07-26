@@ -1,14 +1,14 @@
 /*----------------------Custom Variables-----------------------------------*/
 // Create your own map
-$custom-colors: ('bg-black': #121212,
+$custom-colors: (
+  'bg-black': #121212,
   'bg-black-contrast': #353535,
   'bg-light': #fff,
   'bg-light-contrast': rgb(206, 206, 206),
   'spring-green': #ff7d00,
 );
 
-$font-family-sans-serif: 'Rubik',
-sans-serif;
+$font-family-sans-serif: 'Rubik', sans-serif;
 
 $border-radius: 0.7rem;
 $border-radius-custom: 0.5rem;
@@ -95,19 +95,6 @@ body {
   text-decoration: none;
 }
 
-.avatar {
-  border-radius: $border-radius-custom;
-  width: 38px;
-
-  &.avatar-sm {
-    width: 28px;
-  }
-
-  &.avatar-lg {
-    width: 58px;
-  }
-}
-
 .input-group {
   &.search {
     padding: 0.2em;
@@ -158,7 +145,6 @@ body {
   color: var(--amber-sae-ece);
 }
 
-
 .theme-toggle:hover {
   transition: all 0.2s;
   background-color: --pakistan-green;
@@ -175,7 +161,9 @@ body {
   }
 
   .card-img-top {
+    object-fit: cover;
     border-radius: $border-radius;
+    max-height: 172px;
   }
 }
 
@@ -192,6 +180,9 @@ body {
     border-radius: $border-radius;
     width: 40%;
     height: 50%;
+    object-fit: cover;
+    max-height: 80px;
+    max-width: 40%;
   }
 }
 
