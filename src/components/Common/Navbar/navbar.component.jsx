@@ -6,7 +6,7 @@ const NavBar = ({ darkMode, setDarkMode }) => {
   return (
     <Fragment>
       <nav
-        className=" pt-3 sticky-top navbar-custom"
+        className=" py-2 sticky-top navbar-custom"
         data-theme={darkMode ? 'dark' : 'light'}
       >
         <div className="d-flex container-fluid  align-items-center justify-content-between">
