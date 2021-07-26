@@ -6,10 +6,15 @@ const NavBar = ({ darkMode, setDarkMode }) => {
   return (
     <Fragment>
       <nav className="navbar  sticky-top" data-theme={darkMode ? 'dark' : 'light'}>
-        <div className="d-flex container-fluid  align-items-center justify-content-between">
-          <div className="head d-flex ">
-            <Link to="/" className="navbar-brand h3 fw-bold ">
+        <div className=" container-fluid  align-items-center justify-content-between">
+          <div className="head d-none d-md-block">
+            <Link to="/" className="navbar-brand h3 fw-bold  ">
               wavel.
+            </Link>
+          </div>
+          <div className="head  d-block d-md-none">
+            <Link to="/" className="navbar-brand h3 m-0 fw-bold  ">
+              w.
             </Link>
           </div>
           <div className="" style={{ minWidth: '40%' }}>
@@ -38,13 +43,13 @@ const NavBar = ({ darkMode, setDarkMode }) => {
               >
                 {darkMode ? (
                   <div className="d-flex align-items-center">
-                    <i className="fas fa-sun me-2" />
-                    <p className="m-0 d-none d-md-block">Light Mode</p>
+                    <i className="fas fa-sun" />
+                    <p className="m-0 d-none ms-2  d-md-block">Light Mode</p>
                   </div>
                 ) : (
                   <div className="d-flex align-items-center">
-                    <i className="fas fa-moon me-2" />
-                    <p className="m-0 d-none d-md-block">Dark Mode</p>
+                    <i className="fas fa-moon" />
+                    <p className="m-0 d-none  ms-2 d-md-block">Dark Mode</p>
                   </div>
                 )}
               </button>
