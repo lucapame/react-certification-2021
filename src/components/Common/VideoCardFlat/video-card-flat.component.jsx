@@ -6,7 +6,7 @@ const VideoCardFlat = (props) => {
   const { snippet } = props;
   return (
     <Fragment>
-      <Link to="/player" className="d-flex video-card-flat decoration-none">
+      <Link to="/player" className="d-flex video-card-flat decoration-none rounded">
         <img
           src={snippet.thumbnails.medium.url}
           className="card-img-top"
