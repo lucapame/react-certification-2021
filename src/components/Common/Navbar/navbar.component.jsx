@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import Avatar from './avatar.component';
+import Avatar from '../Avatar/avatar.component';
 
 const NavBar = ({ darkMode, setDarkMode }) => {
   return (
@@ -15,9 +15,10 @@ const NavBar = ({ darkMode, setDarkMode }) => {
           <div className="" style={{ minWidth: '40%' }}>
             <div className="input-group search">
               <input
+                id="search-input"
                 type="text"
                 className="form-control"
-                placeholder="Buscar"
+                placeholder="Search Something"
                 aria-label="search-icon"
               />
 
@@ -29,7 +30,12 @@ const NavBar = ({ darkMode, setDarkMode }) => {
           </div>
           <div className="tail d-flex">
             <div className="toggle mx-3 align-items-center">
-              <button type="button" className="btn theme-toggle" onClick={setDarkMode}>
+              <button
+                data-testid="theme-btn"
+                type="button"
+                className="btn theme-toggle"
+                onClick={setDarkMode}
+              >
                 {darkMode ? (
                   <div className="d-flex align-items-center">
                     <i className="fas fa-sun me-2" />

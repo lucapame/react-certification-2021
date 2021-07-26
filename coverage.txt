@@ -1,0 +1,26 @@
+
+> react-certification-2020@0.1.0 test C:\Users\luca-\Documents\GitHub\react-certification-2021
+> react-scripts test "--coverage"
+
+---------------------------------|----------|----------|----------|----------|-------------------|
+File                             |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+---------------------------------|----------|----------|----------|----------|-------------------|
+All files                        |    70.83 |    73.33 |    63.64 |    70.83 |                   |
+ components/Common/Avatar        |      100 |      100 |      100 |      100 |                   |
+  avatar.component.jsx           |      100 |      100 |      100 |      100 |                   |
+ components/Common/Navbar        |      100 |       50 |      100 |      100 |                   |
+  navbar.component.jsx           |      100 |       50 |      100 |      100 |              8,39 |
+ components/Common/VideoCard     |      100 |      100 |      100 |      100 |                   |
+  video-card.component.jsx       |      100 |      100 |      100 |      100 |                   |
+ components/Common/VideoCardFlat |      100 |      100 |      100 |      100 |                   |
+  video-card-flat.component.jsx  |      100 |      100 |      100 |      100 |                   |
+ components/Layout               |        0 |        0 |        0 |        0 |                   |
+  Layout.component.jsx           |        0 |        0 |        0 |        0 |             5,7,9 |
+ pages/Home                      |      100 |      100 |      100 |      100 |                   |
+  Home.page.jsx                  |      100 |      100 |      100 |      100 |                   |
+ pages/NotFound                  |      100 |      100 |      100 |      100 |                   |
+  NotFound.page.jsx              |      100 |      100 |      100 |      100 |                   |
+ pages/VideoPlayer               |        0 |      100 |        0 |        0 |                   |
+  Player.page.jsx                |        0 |      100 |        0 |        0 |          6,7,8,27 |
+---------------------------------|----------|----------|----------|----------|-------------------|
+

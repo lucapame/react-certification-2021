@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import VideoCardFlat from '../../components/Common/video-card-flat.component';
+import VideoCardFlat from '../../components/Common/VideoCardFlat/video-card-flat.component';
 import formatter from '../../utils/formatter';
 import { getVideosList } from '../../utils/mock-data';
 

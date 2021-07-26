@@ -1,13 +1,17 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import formatter from '../../utils/formatter';
+import formatter from '../../../utils/formatter';
 
 const VideoCardFlat = (props) => {
   const { snippet } = props;
   return (
     <Fragment>
       <Link to="/player" className="d-flex video-card-flat decoration-none">
-        <img src={snippet.thumbnails.medium.url} className="card-img-top" alt="..." />
+        <img
+          src={snippet.thumbnails.medium.url}
+          className="card-img-top"
+          alt="Video thumbnail"
+        />
         <div className="ms-2 ">
           <p className="h5 m-0">{snippet.title}</p>
           <p className="m-0 text-lead text-xs">

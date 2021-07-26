@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NavBar from '../Common/navbar.component';
+import NavBar from '../Common/Navbar/navbar.component';
 
 function Layout({ children }) {
   const [darkMode, setDarkMode] = useState(false);

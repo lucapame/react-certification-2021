@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import VideoCard from '../../components/Common/video-card.component';
+import VideoCard from '../../components/Common/VideoCard/video-card.component';
 import { getVideosList } from '../../utils/mock-data';
 
 function HomePage() {
@@ -13,15 +13,21 @@ function HomePage() {
           </p>
         </div>
 
-        <div className="video-list row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-4">
-          {getVideosList().items.map((video) => {
-            return (
-              <div className="col my-1" key={video.etag}>
-                <VideoCard {...video} />
-              </div>
-            );
-          })}
-        </div>
+        {!getVideosList() || !getVideosList().items || !getVideosList().items.length ? (
+          <div className="text-center d-flex justify-content-center">
+            <p className="h3 fw-light ">Sorry, there is no results to show :(</p>
+          </div>
+        ) : (
+          <div className="video-list row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-4">
+            {getVideosList().items.map((video) => {
+              return (
+                <div className="col my-1" key={video.etag}>
+                  <VideoCard {...video} />
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </Fragment>
   );
