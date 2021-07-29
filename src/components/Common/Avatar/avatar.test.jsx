@@ -26,5 +26,5 @@ test('renders content without a url and an alt text', async () => {
   const { getByAltText } = await render(<Avatar {...props} />);
   const image = getByAltText('Avatar Image');
 
-  expect(image.src).toContain('/images/profile_placeholder.jpg');
+  expect(image.src).toContain('/images/profile_placeholder.png');
 });

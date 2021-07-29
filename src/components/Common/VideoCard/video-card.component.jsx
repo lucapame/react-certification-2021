@@ -1,27 +1,22 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import formatter from '../../../utils/formatter';
+import { CardMutedText, TopImage, VideoCardWrapper } from './Styled/styled-components';
 
 const VideoCard = (props) => {
-  const { snippet } = props;
+  const { thumbnalURL, title, channelTitle, publishTime } = props;
   return (
     <Fragment>
-      <Link
-        to="/player"
-        className="card video-card decoration-none"
-        data-testid="video-card"
-      >
-        <img
-          src={snippet.thumbnails.medium.url}
-          className="card-img-top"
-          alt="Video thumbnail"
-        />
-        <div className="card-body px-0">
-          <h5 className="card-title">{snippet.title}</h5>
-          <p className="m-0 card-lead">
-            {snippet.channelTitle} &bull; {formatter.formatDate(snippet.publishTime)}
-          </p>
-        </div>
+      <Link to="/player" className="decoration-none" data-testid="video-card">
+        <VideoCardWrapper className="card">
+          <TopImage src={thumbnalURL} className="card-img-top" alt="Video thumbnail" />
+          <div className="card-body px-0">
+            <h5 className="card-title">{title}</h5>
+            <CardMutedText className="m-0">
+              {channelTitle} &bull; {formatter.formatDate(publishTime)}
+            </CardMutedText>
+          </div>
+        </VideoCardWrapper>
       </Link>
     </Fragment>
   );

@@ -37,7 +37,12 @@ test('renders content', async () => {
 
   const { getByAltText, getByText, queryByText } = await render(
     <BrowserRouter>
-      <VideoCard {...props} />
+      <VideoCard
+        thumbnalURL={props.snippet.thumbnails.medium.url}
+        title={props.snippet.title}
+        channelTitle={props.snippet.channelTitle}
+        publishTime={props.snippet.publishTime}
+      />
     </BrowserRouter>
   );
 
