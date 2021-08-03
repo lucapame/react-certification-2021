@@ -1,3 +1,5 @@
 const AUTH_STORAGE_KEY = 'wa_cert_authenticated';
+const YOUTUBE_KEY = 'AIzaSyCcUUDRL6PCK6-x1Rpf9tr6C5AWZEv1sus';
+const MAX_RESUTS_ON_SEARCH = 32;
 
-export { AUTH_STORAGE_KEY };
+export { AUTH_STORAGE_KEY, YOUTUBE_KEY, MAX_RESUTS_ON_SEARCH };

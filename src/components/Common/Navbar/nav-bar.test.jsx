@@ -3,6 +3,11 @@ import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import NavBar from './navbar.component';
+import Store from '../../../utils/store';
+
+const customRender = (ui) => {
+  return render(<Store>{ui}</Store>);
+};
 
 test('renders content', async () => {
   const props = {
@@ -12,7 +17,7 @@ test('renders content', async () => {
     },
   };
 
-  const { getByText, getByPlaceholderText } = render(
+  const { getByText, getByPlaceholderText } = customRender(
     <BrowserRouter>
       <NavBar {...props} />
     </BrowserRouter>
@@ -34,7 +39,9 @@ test('after clicking theme button the theme must be change', () => {
 
   const { getByTestId } = render(
     <BrowserRouter>
-      <NavBar {...props} />
+      <Store>
+        <NavBar {...props} />
+      </Store>
     </BrowserRouter>
   );
 

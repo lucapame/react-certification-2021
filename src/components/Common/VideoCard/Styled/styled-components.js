@@ -11,6 +11,8 @@ export const VideoCardWrapper = styled.div`
   background-color: var(--bg-color);
   cursor: pointer;
   text-decoration: none;
+  animation: 1s ease-in-out fade-in;
+  height: 330px;
 `;
 
 export const CardMutedText = styled.p`
@@ -31,6 +33,7 @@ export const VideoCardFlatWrapper = styled.div`
   }
   cursor: pointer;
   border-radius: var(--border-radius);
+  animation: 1s ease-in-out fade-in;
   padding: 0.5em;
 `;
 

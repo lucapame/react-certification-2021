@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+
 import NavBar from '../Common/Navbar/navbar.component';
 
 function Layout({ children }) {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   return (
     <main className="App" data-theme={darkMode ? 'dark' : 'light'}>

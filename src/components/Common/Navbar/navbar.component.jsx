@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router';
+import { SET_SEARCH_VALUE } from '../../../utils/action-types';
+import { Context } from '../../../utils/store';
 import Avatar from '../Avatar/avatar.component';
 import {
   Brand,
@@ -9,11 +12,26 @@ import {
 } from './Styled/styled-components';
 
 const NavBar = ({ darkMode, setDarkMode }) => {
+  const [searchValue, setsearchValue] = useState('');
+  const history = useHistory();
+  const [state, dispatch] = useContext(Context);
+
+  const onChange = (e) => {
+    setsearchValue(e.target.value);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      history.push('/');
+      dispatch({ type: SET_SEARCH_VALUE, payload: searchValue });
+    }
+  };
+
   return (
     <Navbar className=" py-2 sticky-top" data-theme={darkMode ? 'dark' : 'light'}>
       <div className="d-flex container-fluid  align-items-center justify-content-between">
         <div className="d-flex ">
-          <Brand to="/" className=" h3 fw-bold ">
+          <Brand to="/" className=" h3 fw-bold me-3 ">
             wavel.
           </Brand>
         </div>
@@ -23,28 +41,22 @@ const NavBar = ({ darkMode, setDarkMode }) => {
               id="search-input"
               type="text"
               className="form-control"
-              placeholder="Search Something"
+              placeholder={state.searchValue ? state.searchValue : 'Search Something'}
+              value={searchValue}
+              onChange={onChange}
+              onKeyPress={handleKeyPress}
             />
-            <SearchIcon className="input-group-text border-0">
+            <SearchIcon
+              className="input-group-text border-0"
+              onClick={() => {
+                history.push('/');
+                dispatch({ type: SET_SEARCH_VALUE, payload: searchValue });
+              }}
+            >
               {' '}
               <i className="fas fa-search me-2" />
             </SearchIcon>
           </SearchInputGroup>
-
-          {/* <div className="input-group search">
-            <input
-              id="search-input"
-              type="text"
-              className="form-control"
-              placeholder="Search Something"
-              aria-label="search-icon"
-            />
-
-            <span className="input-group-text border-0">
-              {' '}
-              <i className="fas fa-search" />
-            </span>
-          </div> */}
         </div>
         <div className="tail d-flex">
           <div className="toggle mx-3 align-items-center">

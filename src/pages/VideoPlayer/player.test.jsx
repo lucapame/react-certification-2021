@@ -3,13 +3,14 @@ import '@testing-library/jest-dom/extend-expect';
 import { cleanup, render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
-import Home from './Home.page';
 import { useYoutubeQuery } from '../../utils/hooks/useYoutubeQuery';
-import Store from '../../utils/store';
+import { Context } from '../../utils/store';
+
+import VideoPlayer from './Player.page';
 import { MAX_RESUTS_ON_SEARCH } from '../../utils/constants';
 
-const customRender = (ui) => {
-  return render(<Store>{ui}</Store>);
+const customRender = (ui, state, dispatch) => {
+  return render(<Context.Provider value={[state, dispatch]}>{ui}</Context.Provider>);
 };
 
 const mockResult = {
@@ -89,9 +90,47 @@ const mockResult = {
   ],
 };
 
+const sigleVideo = {
+  kind: 'youtube#searchResult',
+  etag: '_PVKwNJf_qw9nukFeRFOtQ837o0',
+  id: {
+    kind: 'youtube#channel',
+    channelId: 'UCPGzT4wecuWM0BH9mPiulXg',
+  },
+  snippet: {
+    publishedAt: '2014-09-27T01:39:18Z',
+    channelId: 'UCPGzT4wecuWM0BH9mPiulXg',
+    title: 'Wizeline',
+    description:
+      "Wizeline transforms how teams build technology. Its customers accelerate the delivery of innovative products with proven solutions, which combine Wizeline's ...",
+    thumbnails: {
+      default: {
+        url: 'https:yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s88-c-k-c0xffffffff-no-rj-mo',
+      },
+      medium: {
+        url: 'https:yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s240-c-k-c0xffffffff-no-rj-mo',
+      },
+      high: {
+        url: 'https:yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s800-c-k-c0xffffffff-no-rj-mo',
+      },
+    },
+    channelTitle: 'Wizeline',
+    liveBroadcastContent: 'upcoming',
+    publishTime: '2014-09-27T01:39:18Z',
+  },
+};
+
+const mockGlobalState = {
+  searchValue: '',
+  currentVideo: sigleVideo,
+};
 jest.mock('../../utils/hooks/useYoutubeQuery', () => ({
   useYoutubeQuery: jest.fn(),
 }));
+
+beforeEach(() => {
+  window.scrollTo = jest.fn();
+});
 
 afterEach(cleanup);
 
@@ -103,17 +142,14 @@ test('renders content', () => {
   };
 
   useYoutubeQuery.mockImplementation(() => state);
-  const { queryByText } = customRender(
+  const { getByTestId } = customRender(
     <BrowserRouter>
-      <Home />
-    </BrowserRouter>
+      <VideoPlayer />
+    </BrowserRouter>,
+    mockGlobalState,
+    jest.fn()
   );
-  expect(queryByText('Hey there!')).toBeInTheDocument();
-  expect(
-    queryByText(
-      'Find the videos that you love and discover the one that will blow your mind.'
-    )
-  ).toBeInTheDocument();
+  expect(getByTestId('video_Iframe')).toBeInTheDocument();
 });
 
 test('renders the list of videos', () => {
@@ -125,14 +161,16 @@ test('renders the list of videos', () => {
   useYoutubeQuery.mockImplementation(() => state);
   const { getAllByTestId } = customRender(
     <BrowserRouter>
-      <Home />
-    </BrowserRouter>
+      <VideoPlayer />
+    </BrowserRouter>,
+    mockGlobalState,
+    jest.fn()
   );
 
-  expect(getAllByTestId('video-card').length).toEqual(mockResult.items.length);
+  expect(getAllByTestId('video-flat-card').length).toEqual(mockResult.items.length);
 });
 
-test('renders a "not found" message when is not results to show', () => {
+test('renders a error message', () => {
   const state = {
     status: 'error',
     data: [],
@@ -141,8 +179,10 @@ test('renders a "not found" message when is not results to show', () => {
   useYoutubeQuery.mockImplementation(() => state);
   const { queryByText } = customRender(
     <BrowserRouter>
-      <Home />
-    </BrowserRouter>
+      <VideoPlayer />
+    </BrowserRouter>,
+    mockGlobalState,
+    jest.fn()
   );
   expect(queryByText('Sorry, there was an an error :(')).toBeInTheDocument();
 });
@@ -156,8 +196,10 @@ test('renders the loader', () => {
   useYoutubeQuery.mockImplementation(() => state);
   const { getAllByTestId } = customRender(
     <BrowserRouter>
-      <Home />
-    </BrowserRouter>
+      <VideoPlayer />
+    </BrowserRouter>,
+    mockGlobalState,
+    jest.fn()
   );
   expect(getAllByTestId('preloader-card').length).toEqual(MAX_RESUTS_ON_SEARCH);
 });

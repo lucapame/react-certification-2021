@@ -29,3 +29,16 @@ export const VideoListContained = styled.div`
     height: calc(55vh);
   }
 `;
+
+export const Preloader = styled.div`
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: transparent;
+`;
+
+export const PlaceholderContainer = styled.div`
+  min-width: 100%;
+  height: 120px;
+  border-radius: var(--border-radius);
+  animation: 1s ease infinite pulse;
+`;
