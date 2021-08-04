@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import axios from 'axios';
-import { MAX_RESUTS_ON_SEARCH, YOUTUBE_KEY } from '../constants';
+import { MAX_RESUTS_ON_SEARCH } from '../constants';
 
 const api = axios.create({
   baseURL: 'https://www.googleapis.com/youtube/v3/',
@@ -9,7 +9,7 @@ const api = axios.create({
     type: 'video',
     order: 'relevance',
     maxResults: MAX_RESUTS_ON_SEARCH,
-    key: YOUTUBE_KEY,
+    key: process.env.REACT_APP_YOUTUBE_KEY,
   },
 });
 

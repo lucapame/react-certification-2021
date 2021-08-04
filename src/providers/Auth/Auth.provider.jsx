@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 
-import { AUTH_STORAGE_KEY } from '../../utils/constants';
 import { storage } from '../../utils/storage';
 
 const AuthContext = React.createContext(null);
@@ -17,7 +16,7 @@ function AuthProvider({ children }) {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    const lastAuthState = storage.get(AUTH_STORAGE_KEY);
+    const lastAuthState = storage.get(process.env.REACT_AUTH_STORAGE_KEY);
     const isAuthenticated = Boolean(lastAuthState);
 
     setAuthenticated(isAuthenticated);
@@ -25,12 +24,12 @@ function AuthProvider({ children }) {
 
   const login = useCallback(() => {
     setAuthenticated(true);
-    storage.set(AUTH_STORAGE_KEY, true);
+    storage.set(process.env.REACT_AUTH_STORAGE_KEY, true);
   }, []);
 
   const logout = useCallback(() => {
     setAuthenticated(false);
-    storage.set(AUTH_STORAGE_KEY, false);
+    storage.set(process.env.REACT_AUTH_STORAGE_KEY, false);
   }, []);
 
   return (
