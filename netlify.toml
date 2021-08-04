@@ -1,4 +1,0 @@
-
-[build.environment]
-  REACT_APP_AUTH_STORAGE_KEY = "wa_cert_authenticated"
-  REACT_APP_YOUTUBE_KEY = "AIzaSyCcUUDRL6PCK6-x1Rpf9tr6C5AWZEv1sus"
