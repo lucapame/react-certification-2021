@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Redirect, useParams } from 'react-router';
-import VideoCardFlat from '../../components/Common/VideoCard/video-card-flat.component';
+import Loader from '../../components/Common/loader/loader.component';
+import VideoCard from '../../components/Common/VideoCard/video-card.component';
 import { SET_CURRENT_VIDEO } from '../../utils/action-types';
-import { MAX_RESUTS_ON_SEARCH } from '../../utils/constants';
 import helper from '../../utils/helpers';
 import { useYoutubeQuery } from '../../utils/hooks/useYoutubeQuery';
 import { Context } from '../../utils/store';
@@ -11,8 +11,6 @@ import {
   VideoListContained,
   VideoPlayerContainer,
   VideoPlayerWsrpper,
-  PlaceholderContainer,
-  Preloader,
 } from './Styled/styled-components';
 
 const VideoPlayer = () => {
@@ -32,17 +30,17 @@ const VideoPlayer = () => {
             <p className="fw-bold">More like this</p>
             {data.items.map((video, index) => {
               return (
-                <div className="my-3" key={video.etag}>
-                  <VideoCardFlat
-                    onClick={() => dispatch({ type: SET_CURRENT_VIDEO, payload: video })}
-                    index={index}
-                    videoId={video.id.videoId}
-                    thumbnalURL={video.snippet.thumbnails.medium.url}
-                    title={video.snippet.title}
-                    channelTitle={video.snippet.channelTitle}
-                    publishTime={video.snippet.publishTime}
-                  />
-                </div>
+                <VideoCard
+                  isFlatCard="true"
+                  key={video.etag}
+                  onClick={() => dispatch({ type: SET_CURRENT_VIDEO, payload: video })}
+                  index={index}
+                  videoId={video.id.videoId}
+                  thumbnalURL={video.snippet.thumbnails.medium.url}
+                  title={video.snippet.title}
+                  channelTitle={video.snippet.channelTitle}
+                  publishTime={video.snippet.publishTime}
+                />
               );
             })}
           </VideoListContained>
@@ -51,17 +49,7 @@ const VideoPlayer = () => {
       case 'loading':
         return (
           <VideoListContained className="col-12 col-lg-3  ">
-            {Array.from(Array(MAX_RESUTS_ON_SEARCH)).map((x, index) => (
-              <Preloader
-                className="my-3"
-                key={`item ${helper.generateUid()}`}
-                data-testid="preloader-card"
-              >
-                <PlaceholderContainer
-                  style={{ animationDelay: `${index * (1 / 18)}s` }}
-                />
-              </Preloader>
-            ))}
+            <Loader isFlatCard="true" />
           </VideoListContained>
         );
 

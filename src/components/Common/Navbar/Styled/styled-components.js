@@ -5,6 +5,10 @@ export const Navbar = styled.nav`
   background: var(--bg-color);
   height: var(--navbar-height);
   display: flex;
+
+  @media (max-height: 650px) {
+    height: calc(var(--navbar-height) * 2);
+  }
 `;
 
 export const Brand = styled(Link)`

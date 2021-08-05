@@ -31,6 +31,7 @@ $enable-responsive-font-sizes: true;
 
   --border-radius: 0.7rem;
   --navbar-height: 8vh;
+  --lh: 1.2rem;
 }
 
 [data-theme='dark'] {
@@ -43,6 +44,8 @@ $enable-responsive-font-sizes: true;
 html,
 body {
   height: 100vh;
+  line-height: var(--lh);
+  background-color: var(--bg-color);
 }
 
 .App {
