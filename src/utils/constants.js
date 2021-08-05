@@ -1,3 +1,3 @@
-const AUTH_STORAGE_KEY = 'wa_cert_authenticated';
+const MAX_RESUTS_ON_SEARCH = 32;
 
-export { AUTH_STORAGE_KEY };
+export { MAX_RESUTS_ON_SEARCH };

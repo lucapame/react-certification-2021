@@ -1,7 +1,11 @@
-import React from 'react';
-import VideoCardFlat from '../../components/Common/VideoCard/video-card-flat.component';
-import formatter from '../../utils/formatter';
-import { getVideosList } from '../../utils/mock-data';
+import React, { useContext } from 'react';
+import { Redirect, useParams } from 'react-router';
+import Loader from '../../components/Common/loader/loader.component';
+import VideoCard from '../../components/Common/VideoCard/video-card.component';
+import { SET_CURRENT_VIDEO } from '../../utils/action-types';
+import helper from '../../utils/helpers';
+import { useYoutubeQuery } from '../../utils/hooks/useYoutubeQuery';
+import { Context } from '../../utils/store';
 import {
   Player,
   VideoListContained,
@@ -10,39 +14,81 @@ import {
 } from './Styled/styled-components';
 
 const VideoPlayer = () => {
+  const { videoURL } = useParams();
+  const [state, dispatch] = useContext(Context);
+
+  const { currentVideo } = state;
   window.scrollTo(0, 0);
-  return (
-    <VideoPlayerWsrpper className="container-fluid ">
-      <div className="row ">
-        <div className="col-12  col-lg-9">
-          <VideoPlayerContainer className="video-payer">
-            <Player
-              title="Doja Cat - Kiss Me More (Official Video) ft. SZA"
-              src="https://www.youtube.com/embed/0EVVKs6DQLo"
-            />
-          </VideoPlayerContainer>
-          <h3 className="m-0">Doja Cat - Kiss Me More (Official Video) ft. SZA</h3>
-          <p className="m-0 text-lead">
-            Doja Cat - Vevo &bull; {formatter.formatDate('2019-03-05T03:52:55Z')}
-          </p>
-        </div>
-        <VideoListContained className="col-12 col-lg-3  ">
-          <p className="fw-bold">More like this</p>
-          {getVideosList().items.map((video) => {
-            return (
-              <div className="my-3" key={video.etag}>
-                <VideoCardFlat
+
+  const { data, status } = useYoutubeQuery(state.searchValue);
+
+  const getList = () => {
+    switch (status) {
+      case 'success':
+        return (
+          <VideoListContained className="col-12 col-lg-3  ">
+            <p className="fw-bold">More like this</p>
+            {data.items.map((video, index) => {
+              return (
+                <VideoCard
+                  isFlatCard="true"
+                  key={video.etag}
+                  onClick={() => dispatch({ type: SET_CURRENT_VIDEO, payload: video })}
+                  index={index}
+                  videoId={video.id.videoId}
                   thumbnalURL={video.snippet.thumbnails.medium.url}
                   title={video.snippet.title}
                   channelTitle={video.snippet.channelTitle}
                   publishTime={video.snippet.publishTime}
                 />
-              </div>
-            );
-          })}
-        </VideoListContained>
+              );
+            })}
+          </VideoListContained>
+        );
+
+      case 'loading':
+        return (
+          <VideoListContained className="col-12 col-lg-3  ">
+            <Loader isFlatCard="true" />
+          </VideoListContained>
+        );
+
+      case 'error':
+        return (
+          <div className="text-center d-flex justify-content-center">
+            <p className="h3 fw-light ">Sorry, there was an an error :(</p>
+          </div>
+        );
+
+      default:
+        break;
+    }
+  };
+
+  return state.currentVideo ? (
+    <VideoPlayerWsrpper className="container-fluid ">
+      <div className="row ">
+        <div className="col-12  col-lg-9 mb-2">
+          <VideoPlayerContainer className="video-payer">
+            <Player
+              data-testid="video_Iframe"
+              title="Doja Cat - Kiss Me More (Official Video) ft. SZA"
+              src={`https://www.youtube.com/embed/${videoURL}`}
+              alt="video_content"
+            />
+          </VideoPlayerContainer>
+          <h3 className="m-0">{currentVideo.snippet.title}</h3>
+          <p className="m-0 text-lead">
+            {currentVideo.snippet.channelTitle} &bull;{' '}
+            {helper.formatDate(currentVideo.snippet.publishTime)}
+          </p>
+        </div>
+
+        {getList()}
       </div>
     </VideoPlayerWsrpper>
+  ) : (
+    <Redirect to="/" />
   );
 };
 

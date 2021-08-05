@@ -25,6 +25,7 @@ export const Player = styled.iframe`
 export const VideoListContained = styled.div`
   height: calc(100vh - 8vh);
   overflow-y: scroll;
+  background-color: var(--bg-color);
   @media (max-width: 600px) {
     height: calc(55vh);
   }

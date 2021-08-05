@@ -19,9 +19,6 @@ $enable-responsive-font-sizes: true;
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap');
 
-// Merge the maps
-$theme-colors: map-merge($theme-colors, $custom-colors);
-
 :root {
   --bg-color: #f4f4f4;
   --bg-transparent-color: #f4f4f480;
@@ -33,8 +30,8 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
   --amber-sae-ece: #ff7d00ff;
 
   --border-radius: 0.7rem;
-
   --navbar-height: 8vh;
+  --lh: 1.2rem;
 }
 
 [data-theme='dark'] {
@@ -47,6 +44,8 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 html,
 body {
   height: 100vh;
+  line-height: var(--lh);
+  background-color: var(--bg-color);
 }
 
 .App {
@@ -96,4 +95,35 @@ input:focus {
 
 .decoration-none {
   text-decoration: none;
+}
+
+/*---------------------------------ANIMATIONS----------------------------------------------*/
+
+@keyframes pulse {
+  0% {
+    background: var(--bg-color);
+    transform: scale(1);
+  }
+
+  25% {
+    background: var(--bg-contrast-color);
+    transform: scale(1.015);
+  }
+
+  50% {
+    background: var(--bg-color);
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }
