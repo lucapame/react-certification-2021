@@ -12,6 +12,11 @@ export const VideoPlayerContainer = styled.div`
   padding-bottom: 50.25%;
   padding-top: 15px;
   height: 0;
+  background-color: var(--bg-color);
+
+  @media (max-height: 380px) {
+    padding-bottom: 30.25%;
+  }
 `;
 export const Player = styled.iframe`
   position: absolute;
@@ -25,6 +30,7 @@ export const Player = styled.iframe`
 export const VideoListContained = styled.div`
   height: calc(100vh - 8vh);
   overflow-y: scroll;
+  overflow-x: hidden;
   background-color: var(--bg-color);
   @media (max-width: 600px) {
     height: calc(55vh);

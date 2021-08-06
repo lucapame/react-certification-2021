@@ -69,7 +69,7 @@ const VideoPlayer = () => {
     <VideoPlayerWsrpper className="container-fluid ">
       <div className="row ">
         <div className="col-12  col-lg-9 mb-2">
-          <VideoPlayerContainer className="video-payer">
+          <VideoPlayerContainer>
             <Player
               data-testid="video_Iframe"
               title="Doja Cat - Kiss Me More (Official Video) ft. SZA"
