@@ -19,8 +19,6 @@ export const Card = styled.div`
   width: 35%;
   position: absolute;
   z-index: 1;
-  overflow-x: hidden;
-  overflow-y: scroll;
   transition: 0.5s;
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
