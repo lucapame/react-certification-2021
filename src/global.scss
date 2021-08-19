@@ -21,7 +21,7 @@ $enable-responsive-font-sizes: true;
 
 :root {
   --bg-color: #f4f4f4;
-  --bg-transparent-color: #f4f4f480;
+  --bg-transparent-color: #e3e3e3d2;
   --bg-contrast-color: #e3e3e3;
   --text-color: #000;
   --text-lead: #848484;
@@ -36,7 +36,7 @@ $enable-responsive-font-sizes: true;
 
 [data-theme='dark'] {
   --bg-color: #1f1f1f;
-  --bg-transparent-color: #1f1f1f7c;
+  --bg-transparent-color: #39393bc2;
   --bg-contrast-color: #39393b;
   --text-color: #fff;
 }
@@ -125,5 +125,19 @@ input:focus {
   100% {
     opacity: 1;
     transform: translateX(0px);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -10%, 0);
+    transform: translate3d(0, -10%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }

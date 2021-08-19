@@ -10,3 +10,26 @@ export const AvtarImage = styled.img`
   width: 38px;
   border-radius: 0.7rem;
 `;
+
+export const Card = styled.div`
+  background: var(--bg-transparent-color);
+  backdrop-filter: blur(25px);
+  right: 2%;
+  border-radius: var(--border-radius);
+  width: 35%;
+  position: absolute;
+  z-index: 1;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  transition: 0.5s;
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  animation-duration: 400ms;
+
+  @media (min-width: 925px) {
+    width: 20%;
+  }
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+`;

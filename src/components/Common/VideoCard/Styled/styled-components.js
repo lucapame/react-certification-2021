@@ -17,7 +17,7 @@ export const VideoCardWrapper = styled(Link)`
   height: ${({ flat }) => (flat ? '80px' : '300px')};
   display: ${({ flat }) => (flat ? 'flex' : 'box')};
   margin: ${({ flat }) => (flat ? '1.2rem auto' : '1.2rem auto')};
-  animation-delay: ${({ animationDelay }) => `${animationDelay * (1 / 18)}s` || ''};
+  animation-delay: ${({ animationdelay }) => `${animationdelay * (1 / 18)}s` || ''};
 
   @media (max-width: 990px) {
     height: ${({ flat }) => (flat ? '80px' : '260px')};

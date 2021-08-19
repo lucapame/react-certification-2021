@@ -9,6 +9,7 @@ import {
   SearchIcon,
   SearchInput,
   SearchInputGroup,
+  UnstyledLink,
 } from './Styled/styled-components';
 
 const NavBar = ({ darkMode, setDarkMode }) => {
@@ -59,28 +60,43 @@ const NavBar = ({ darkMode, setDarkMode }) => {
           </SearchInputGroup>
         </div>
         <div className="tail d-flex">
-          <div className="toggle mx-3 align-items-center">
-            <button
-              data-testid="theme-btn"
-              type="button"
-              className="btn theme-toggle"
-              onClick={setDarkMode}
-            >
-              {darkMode ? (
+          <div>
+            <Avatar>
+              <UnstyledLink to="/favorites">
                 <div className="d-flex  align-items-center">
-                  <i className="fas fa-sun " />
-                  <p className="m-0 d-none d-md-block ms-2">Light Mode</p>
+                  <i className="fas fa-heart" />
+                  <p className="m-0 ms-2">Favorites</p>
                 </div>
-              ) : (
-                <div className="d-flex   align-items-center">
-                  <i className="fas fa-moon " />
-                  <p className="m-0 d-none d-md-block ms-2">Dark Mode</p>
+              </UnstyledLink>
+
+              <UnstyledLink to="/" onClick={setDarkMode}>
+                <div className="d-flex  align-items-center">
+                  <i className="fas fa-sign-out-alt" />
+                  <p className="m-0 ms-2">Sign out</p>
                 </div>
-              )}
-            </button>
-          </div>
-          <div className="d-none d-md-block">
-            <Avatar />
+              </UnstyledLink>
+
+              <hr className="dropdown-divider" />
+
+              <button
+                data-testid="theme-btn"
+                type="button"
+                className="btn p-0"
+                onClick={setDarkMode}
+              >
+                {darkMode ? (
+                  <div className="d-flex  align-items-center">
+                    <i className="fas fa-sun " />
+                    <p className="m-0 ms-2">Light Mode</p>
+                  </div>
+                ) : (
+                  <div className="d-flex   align-items-center">
+                    <i className="fas fa-moon " />
+                    <p className="m-0 ms-2">Dark Mode</p>
+                  </div>
+                )}
+              </button>
+            </Avatar>
           </div>
         </div>
       </div>

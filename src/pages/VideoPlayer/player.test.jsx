@@ -167,7 +167,7 @@ test('renders the list of videos', () => {
     jest.fn()
   );
 
-  expect(getAllByTestId('video-flat-card').length).toEqual(mockResult.items.length);
+  expect(getAllByTestId('video-card').length).toEqual(mockResult.items.length);
 });
 
 test('renders a error message', () => {

@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^10.4.9",
+    "@testing-library/react-hooks": "^7.0.1",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-eslint-comments": "^3.2.0",

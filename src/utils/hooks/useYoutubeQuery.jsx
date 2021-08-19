@@ -1,17 +1,7 @@
 import { useEffect, useReducer } from 'react';
-import axios from 'axios';
-import { MAX_RESUTS_ON_SEARCH } from '../constants';
+// import { mockData } from '../mock-data';
 
-const api = axios.create({
-  baseURL: 'https://www.googleapis.com/youtube/v3/',
-  params: {
-    part: 'snippet',
-    type: 'video',
-    order: 'relevance',
-    maxResults: MAX_RESUTS_ON_SEARCH,
-    key: process.env.REACT_APP_YOUTUBE_KEY,
-  },
-});
+import axiosInstance from './axios-instance';
 
 // Reducer for hook state and actions
 const reducer = (state, action) => {
@@ -46,7 +36,7 @@ const useYoutubeQuery = (query, videoId) => {
     let isMounted = true;
 
     dispatch({ type: 'loading' });
-    api
+    axiosInstance
       .get('/search', {
         params: { q: query, relatedToVideoId: videoId },
       })
@@ -56,6 +46,8 @@ const useYoutubeQuery = (query, videoId) => {
       .catch((err) => {
         dispatch({ type: 'error', payload: err.message });
       });
+
+    // if (isMounted) dispatch({ type: 'success', payload: mockData });
 
     return () => {
       isMounted = false;

@@ -25,7 +25,7 @@ const VideoCard = (props) => {
       data-testid="video-card"
       onClick={onClick}
       flat={isFlatCard}
-      animationDelay={index}
+      animationdelay={index}
     >
       <CardImage
         flat={isFlatCard}

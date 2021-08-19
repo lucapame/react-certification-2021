@@ -54,3 +54,9 @@ export const SearchIcon = styled.span`
   cursor: pointer;
   background-color: var(--bg-contrast-color);
 `;
+
+export const UnstyledLink = styled(Link)`
+  text-decoration: none;
+  padding: 1.5rem;
+  margin: 2rem;
+`;
