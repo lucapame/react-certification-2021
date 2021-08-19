@@ -9,7 +9,6 @@ import {
   SearchIcon,
   SearchInput,
   SearchInputGroup,
-  UnstyledLink,
 } from './Styled/styled-components';
 
 const NavBar = ({ darkMode, setDarkMode }) => {
@@ -62,22 +61,6 @@ const NavBar = ({ darkMode, setDarkMode }) => {
         <div className="tail d-flex">
           <div>
             <Avatar>
-              <UnstyledLink to="/favorites">
-                <div className="d-flex  align-items-center">
-                  <i className="fas fa-heart" />
-                  <p className="m-0 ms-2">Favorites</p>
-                </div>
-              </UnstyledLink>
-
-              <UnstyledLink to="/" onClick={setDarkMode}>
-                <div className="d-flex  align-items-center">
-                  <i className="fas fa-sign-out-alt" />
-                  <p className="m-0 ms-2">Sign out</p>
-                </div>
-              </UnstyledLink>
-
-              <hr className="dropdown-divider" />
-
               <button
                 data-testid="theme-btn"
                 type="button"

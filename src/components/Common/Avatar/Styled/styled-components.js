@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const AvtarImage = styled.img`
@@ -30,4 +31,10 @@ export const Card = styled.div`
   @media (max-width: 600px) {
     width: 100%;
   }
+`;
+
+export const UnstyledLink = styled(Link)`
+  text-decoration: none;
+  padding: 1.5rem;
+  margin: 2rem;
 `;
