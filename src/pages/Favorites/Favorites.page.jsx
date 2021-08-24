@@ -16,6 +16,7 @@ const FavoritesPage = () => {
     fetchVideos();
   }, [fetchVideos]);
 
+  console.log(state.favoriteVideos);
   return (
     <div className="container my-3">
       <ColorfulText className="display-4 fw-bold  text-center">
