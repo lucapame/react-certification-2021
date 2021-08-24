@@ -6,6 +6,9 @@ import NotFound from '../../pages/NotFound';
 import Layout from '../Layout';
 import VideoPlayer from '../../pages/VideoPlayer';
 import Store from '../../utils/store';
+import PrivateRoute from '../Private/PrivateRoute.component';
+import FavoritesPage from '../../pages/Favorites/Favorites.page';
+import LoginPage from '../../pages/Login/Login.page';
 
 function App() {
   return (
@@ -20,6 +23,12 @@ function App() {
               <Route exact path="/player/:videoURL">
                 <VideoPlayer />
               </Route>
+              <Route exact path="/login">
+                <LoginPage />
+              </Route>
+              <PrivateRoute exact path="/favorites">
+                <FavoritesPage />
+              </PrivateRoute>
               <Route path="*">
                 <NotFound />
               </Route>

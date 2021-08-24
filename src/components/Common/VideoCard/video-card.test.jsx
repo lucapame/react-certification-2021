@@ -3,6 +3,8 @@ import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import VideoCard from './video-card.component';
+import Store from '../../../utils/store';
+import { AuthContext } from '../../../providers/Auth/Auth.provider';
 
 test('renders content', async () => {
   const props = {
@@ -34,15 +36,31 @@ test('renders content', async () => {
       publishTime: '2019-09-30T23:54:32Z',
     },
   };
-
-  const { getByAltText, getByText, queryByText } = await render(
+  const mockedUser = {
+    id: '123',
+    name: 'Luis Carlos ',
+    avatarUrl:
+      'https://media.glassdoor.com/sqll/868055/wizeline-squarelogo-1473976610815.png',
+  };
+  const { getByAltText, getByText, queryByText, getByTestId } = await render(
     <BrowserRouter>
-      <VideoCard
-        thumbnalURL={props.snippet.thumbnails.medium.url}
-        title={props.snippet.title}
-        channelTitle={props.snippet.channelTitle}
-        publishTime={props.snippet.publishTime}
-      />
+      <AuthContext.Provider
+        value={{
+          login: jest.fn(),
+          logout: jest.fn(),
+          authenticated: true,
+          user: mockedUser,
+        }}
+      >
+        <Store>
+          <VideoCard
+            thumbnalURL={props.snippet.thumbnails.medium.url}
+            title={props.snippet.title}
+            channelTitle={props.snippet.channelTitle}
+            publishTime={props.snippet.publishTime}
+          />
+        </Store>
+      </AuthContext.Provider>
     </BrowserRouter>
   );
 
@@ -52,4 +70,6 @@ test('renders content', async () => {
   expect(getByText(/Video Tour | Welcome to Wizeline Guadalajara/i)).toBeInTheDocument();
   // renders the channel and the date title on the video
   expect(queryByText(/Wizeline • 30 Sept 2019/i)).toBeInTheDocument();
+  // renders the favorite video
+  expect(getByTestId('favorite-button')).toBeInTheDocument();
 });

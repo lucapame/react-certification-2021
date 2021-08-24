@@ -1,11 +1,12 @@
 import React from 'react';
-import { Wrapper, ColorfulText, StyledLink } from './Styled/styled-components';
+import { ColorfulText } from '../../components/Common/StyledComponets';
+import { Wrapper, StyledLink } from './Styled/styled-components';
 
 function NotFoundPage() {
   return (
     <Wrapper className="not-found">
       {/* <ColorfulText className=" fw-bold">404</ColorfulText> */}
-      <ColorfulText className="display-1 fw-bold w-50 text-center">
+      <ColorfulText className="display-1 fw-bold  text-center">
         Oh no! This page does not exsist.
       </ColorfulText>
 
