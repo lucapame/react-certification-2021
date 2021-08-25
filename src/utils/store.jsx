@@ -43,6 +43,7 @@ const initialState = {
 
 const Store = ({ children }) => {
   const [state, dispatch] = useReducer(Reducer, initialState);
+
   useEffect(() => {
     if (state.currentVideo) {
       storage.set('currentVideo', JSON.stringify(state.currentVideo));

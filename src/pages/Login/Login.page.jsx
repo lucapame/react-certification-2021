@@ -69,7 +69,7 @@ function LoginPage() {
               </div>
               <div className="col-12 my-3 ">
                 <label htmlFor="password" className="form-label">
-                  First Name
+                  Password
                 </label>
                 <Field name="password" id="password">
                   {({ field, meta }) => (

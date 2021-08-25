@@ -18,7 +18,7 @@ function AuthProvider({ children }) {
 
   useEffect(() => {
     let isMounted = true;
-    const lastAuthState = storage.get(process.env.REACT_AUTH_STORAGE_KEY);
+    const lastAuthState = storage.get('auth');
     const isAuthenticated = Boolean(lastAuthState);
 
     const lastUser = storage.get('userInfo');
@@ -33,14 +33,14 @@ function AuthProvider({ children }) {
   const login = useCallback((res) => {
     setUser(res);
     setAuthenticated(true);
-    storage.set(process.env.REACT_AUTH_STORAGE_KEY, true);
+    storage.set('auth', true);
     storage.set('userInfo', res);
   }, []);
 
   const logout = useCallback(() => {
     setAuthenticated(false);
     setUser(null);
-    storage.set(process.env.REACT_AUTH_STORAGE_KEY, false);
+    storage.set('auth', false);
     storage.set('userInfo', null);
   }, []);
 

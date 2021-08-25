@@ -14,8 +14,8 @@ function HomePage() {
 
   return (
     <div className="container">
-      <HeaderCard className="mb-4 ">
-        <h1 className="fw-bold mb-2 display-3 text-white">
+      <HeaderCard className="mb-4 text-center">
+        <h1 className="fw-bold mb-2 display-3 text-white ">
           {authenticated ? `Hey ${user?.name}, welcome back` : 'Hey there!'}
         </h1>
         <p className="text-white h4 ">

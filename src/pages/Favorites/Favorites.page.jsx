@@ -20,34 +20,36 @@ const FavoritesPage = () => {
   return (
     <div className="container my-3">
       <ColorfulText className="display-4 fw-bold  text-center">
-        Here you have your favorites
+        Your favorites
       </ColorfulText>
-      <p className="text-center lead">
-        This is the playlist you created with the best videos you found.
-      </p>
+      <p className="text-center lead">Everything you love, you&apos;ll find it here</p>
       <div className="my-3 container">
-        <div className="video-list row row-cols-1 row-cols-md-2 row-cols-lg-4">
-          {state.favoriteVideos.map((video, index) => {
-            return (
-              <VideoCard
-                notLink
-                key={video.etag}
-                etag={video.etag}
-                onClick={() => {
-                  setCurrentVideo(video);
-                  setOpenP(true);
-                }}
-                index={index}
-                videoId={video.videoId}
-                thumbnalURL={video.thumbnalURL}
-                title={video.title}
-                channelTitle={video.channelTitle}
-                publishTime={video.publishTime}
-                fullVideo={video}
-              />
-            );
-          })}
-        </div>
+        {state.favoriteVideos ? (
+          <div className="video-list row row-cols-1 row-cols-md-2 row-cols-lg-4">
+            {state.favoriteVideos.map((video, index) => {
+              return (
+                <VideoCard
+                  notLink
+                  key={video.etag}
+                  etag={video.etag}
+                  onClick={() => {
+                    setCurrentVideo(video);
+                    setOpenP(true);
+                  }}
+                  index={index}
+                  videoId={video.videoId}
+                  thumbnalURL={video.thumbnalURL}
+                  title={video.title}
+                  channelTitle={video.channelTitle}
+                  publishTime={video.publishTime}
+                  fullVideo={video}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          <div className="text-center fw-bold mt-5">You don&apos;t have videos yet.</div>
+        )}
       </div>
 
       <PortalModal
