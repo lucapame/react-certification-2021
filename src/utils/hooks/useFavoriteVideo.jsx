@@ -29,7 +29,8 @@ const useFavoriteVideo = () => {
 
   const fetchVideos = useCallback(() => {
     const cachedVideoList = storage.get('favoriteVideosList');
-    dispatch({ type: FETCH_FAVORITE_VIDEOS, payload: JSON.parse(cachedVideoList) });
+    if (cachedVideoList)
+      dispatch({ type: FETCH_FAVORITE_VIDEOS, payload: JSON.parse(cachedVideoList) });
   }, [dispatch]);
 
   const checkFavorites = useCallback(

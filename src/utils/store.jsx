@@ -33,16 +33,16 @@ const Reducer = (state, action) => {
       throw new Error('invalid action');
   }
 };
-const initialState = {
+let currentState = {
   theme: 'light',
   searchValue: '',
   currentVideo: null,
-  loading: true,
   favoriteVideos: [],
+  loading: true,
 };
 
 const Store = ({ children }) => {
-  const [state, dispatch] = useReducer(Reducer, initialState);
+  const [state, dispatch] = useReducer(Reducer, currentState);
 
   useEffect(() => {
     if (state.currentVideo) {
@@ -52,13 +52,14 @@ const Store = ({ children }) => {
       if (video) dispatch({ type: SET_CURRENT_VIDEO, payload: JSON.parse(video) });
       else storage.remove('currentVideo');
     }
-
-    if (state.favoriteVideos && state.favoriteVideos.length > 0) {
+    const previousState = currentState;
+    currentState = state;
+    if (previousState.favoriteVideos !== currentState.favoriteVideos) {
       storage.set('favoriteVideosList', JSON.stringify(state.favoriteVideos));
     }
-  }, [state.currentVideo, state.favoriteVideos]);
+  }, [state, state.currentVideo, state.favoriteVideos]);
   return <Context.Provider value={[state, dispatch]}>{children}</Context.Provider>;
 };
 
-export const Context = createContext(initialState);
+export const Context = createContext(currentState);
 export default Store;

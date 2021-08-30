@@ -23,7 +23,7 @@ const FavoritesPage = () => {
       </ColorfulText>
       <p className="text-center lead">Everything you love, you&apos;ll find it here</p>
       <div className="my-3 container">
-        {state.favoriteVideos ? (
+        {state.favoriteVideos && state.favoriteVideos.length > 0 ? (
           <div className="video-list row row-cols-1 row-cols-md-2 row-cols-lg-4">
             {state.favoriteVideos.map((video, index) => {
               return (
