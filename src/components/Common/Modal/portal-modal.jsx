@@ -5,12 +5,11 @@ import { Context } from '../../../utils/store';
 import { Button } from '../StyledComponets';
 import { ModalContainer, ModalContent } from './Styled/styled-compoents';
 
-const PortalModal = ({ children, isOpen, onClose }) => {
+const PortalModal = ({ children, onClose }) => {
   const wrapperRef = useRef(null);
   const [state] = useContext(Context);
   useOutsideAlerter(wrapperRef, onClose);
 
-  if (!isOpen) return null;
   return ReactDOM.createPortal(
     <ModalContainer data-theme={state.theme} data-testid="portal-modal-background">
       <ModalContent ref={wrapperRef} data-testid="portal-modal-content">

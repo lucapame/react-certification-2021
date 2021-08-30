@@ -104,13 +104,16 @@ const NavBar = ({ darkMode, setDarkMode }) => {
               <i className="fas fa-user-circle me-2 text-white d-none d-md-inline-block" />{' '}
               Accses
             </Button>
-            <PortalModal
-              message="Hello Portal World!"
-              isOpen={openp}
-              onClose={() => setOpenP(false)}
-            >
-              <LoginPage />
-            </PortalModal>
+
+            {openp && (
+              <PortalModal
+                message="Hello Portal World!"
+                isOpen={openp}
+                onClose={() => setOpenP(false)}
+              >
+                <LoginPage />
+              </PortalModal>
+            )}
           </>
         )}
       </div>
