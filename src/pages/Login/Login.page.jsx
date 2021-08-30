@@ -17,6 +17,18 @@ function LoginPage() {
   const { login } = useAuth();
   const [loading, setloading] = useState(false);
 
+  const onLogin = (values) => {
+    setloading(true);
+    loginApi(values)
+      .then((result) => {
+        login(result);
+        setloading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <FormWrapper className="container-fluid d-fex flex-column align-items-center text-center justify-content-center">
       <LogoImg src="/images/logo.svg" alt="logo" height="70" />
@@ -30,17 +42,7 @@ function LoginPage() {
           password: '',
         }}
         validationSchema={SignupSchema}
-        onSubmit={(values) => {
-          setloading(true);
-          loginApi(values)
-            .then((result) => {
-              login(result);
-              setloading(false);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        }}
+        onSubmit={onLogin}
       >
         {() => (
           <Form>

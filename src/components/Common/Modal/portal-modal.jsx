@@ -26,7 +26,7 @@ const PortalModal = ({ children, isOpen, onClose }) => {
         {children}
       </ModalContent>
     </ModalContainer>,
-    document.body
+    document.querySelector('#global-modal')
   );
 };
 
