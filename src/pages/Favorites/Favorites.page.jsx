@@ -51,31 +51,33 @@ const FavoritesPage = () => {
         )}
       </div>
 
-      <PortalModal
-        message="Hello Portal World!"
-        isOpen={openp}
-        onClose={() => setOpenP(false)}
-      >
-        {currentVideo && (
-          <div>
-            <VideoPlayerContainer>
-              <Player
-                data-testid="video_Iframe"
-                title="Doja Cat - Kiss Me More (Official Video) ft. SZA"
-                src={`https://www.youtube.com/embed/${currentVideo.videoId}`}
-                alt="video_content"
-              />
-            </VideoPlayerContainer>
-            <h3 className="m-0">{currentVideo.title}</h3>
-            <p className="m-0 text-lead">
-              {currentVideo.channelTitle} &bull;{' '}
-              {helpers.formatDate(currentVideo.publishTime)}
-            </p>
+      {openp && (
+        <PortalModal
+          message="Hello Portal World!"
+          isOpen={openp}
+          onClose={() => setOpenP(false)}
+        >
+          {currentVideo && (
+            <div>
+              <VideoPlayerContainer>
+                <Player
+                  data-testid="video_Iframe"
+                  title="Doja Cat - Kiss Me More (Official Video) ft. SZA"
+                  src={`https://www.youtube.com/embed/${currentVideo.videoId}`}
+                  alt="video_content"
+                />
+              </VideoPlayerContainer>
+              <h3 className="m-0">{currentVideo.title}</h3>
+              <p className="m-0 text-lead">
+                {currentVideo.channelTitle} &bull;{' '}
+                {helpers.formatDate(currentVideo.publishTime)}
+              </p>
 
-            {currentVideo.videoURL}
-          </div>
-        )}
-      </PortalModal>
+              {currentVideo.videoURL}
+            </div>
+          )}
+        </PortalModal>
+      )}
     </div>
   );
 };
