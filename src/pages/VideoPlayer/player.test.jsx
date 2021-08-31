@@ -1,16 +1,20 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { cleanup, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-
-import { useYoutubeQuery } from '../../utils/hooks/useYoutubeQuery';
 import { Context } from '../../utils/store';
 
 import VideoPlayer from './Player.page';
 import { MAX_RESUTS_ON_SEARCH } from '../../utils/constants';
+import AuthProvider from '../../providers/Auth';
+import axiosInstance from '../../utils/hooks/axios-instance';
 
 const customRender = (ui, state, dispatch) => {
-  return render(<Context.Provider value={[state, dispatch]}>{ui}</Context.Provider>);
+  return render(
+    <AuthProvider>
+      <Context.Provider value={[state, dispatch]}>{ui}</Context.Provider>
+    </AuthProvider>
+  );
 };
 
 const mockResult = {
@@ -124,24 +128,26 @@ const mockGlobalState = {
   searchValue: '',
   currentVideo: sigleVideo,
 };
-jest.mock('../../utils/hooks/useYoutubeQuery', () => ({
-  useYoutubeQuery: jest.fn(),
-}));
+let mockGet;
 
 beforeEach(() => {
+  mockGet = jest.spyOn(axiosInstance(), 'get');
   window.scrollTo = jest.fn();
 });
 
-afterEach(cleanup);
+afterEach(() => {
+  jest.clearAllMocks();
+});
 
 test('renders content', () => {
-  const state = {
-    status: 'success',
-    data: mockResult,
-    error: null,
-  };
-
-  useYoutubeQuery.mockImplementation(() => state);
+  mockGet.mockImplementation(() => {
+    return {
+      response: {
+        status: 200,
+        data: mockResult,
+      },
+    };
+  });
   const { getByTestId } = customRender(
     <BrowserRouter>
       <VideoPlayer />
@@ -153,12 +159,14 @@ test('renders content', () => {
 });
 
 test('renders the list of videos', () => {
-  const state = {
-    status: 'success',
-    data: mockResult,
-    error: null,
-  };
-  useYoutubeQuery.mockImplementation(() => state);
+  mockGet.mockImplementation(() => {
+    return {
+      response: {
+        status: 200,
+        data: mockResult,
+      },
+    };
+  });
   const { getAllByTestId } = customRender(
     <BrowserRouter>
       <VideoPlayer />
@@ -167,16 +175,20 @@ test('renders the list of videos', () => {
     jest.fn()
   );
 
-  expect(getAllByTestId('video-card').length).toEqual(mockResult.items.length);
+  setTimeout(() => {
+    expect(getAllByTestId('video-card').length).toEqual(mockResult.items.length);
+  }, 1000);
 });
 
 test('renders a error message', () => {
-  const state = {
-    status: 'error',
-    data: [],
-    error: 'something',
-  };
-  useYoutubeQuery.mockImplementation(() => state);
+  mockGet.mockImplementation(() => {
+    return {
+      response: {
+        status: 200,
+        data: [],
+      },
+    };
+  });
   const { queryByText } = customRender(
     <BrowserRouter>
       <VideoPlayer />
@@ -184,16 +196,13 @@ test('renders a error message', () => {
     mockGlobalState,
     jest.fn()
   );
-  expect(queryByText('Sorry, there was an an error :(')).toBeInTheDocument();
+  setTimeout(() => {
+    expect(queryByText('Sorry, there was an an error :(')).toBeInTheDocument();
+  }, 1000);
 });
 
 test('renders the loader', () => {
-  const state = {
-    status: 'loading',
-    data: [],
-    error: null,
-  };
-  useYoutubeQuery.mockImplementation(() => state);
+  mockGet.mockImplementation(() => Promise.resolve(mockResult));
   const { getAllByTestId } = customRender(
     <BrowserRouter>
       <VideoPlayer />

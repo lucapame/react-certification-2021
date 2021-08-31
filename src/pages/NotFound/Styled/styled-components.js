@@ -21,11 +21,3 @@ export const StyledLink = styled(Link)`
   font-size: 1.5em;
   background-color: var(--bg-color);
 `;
-
-export const ColorfulText = styled.h1`
-  background: -webkit-linear-gradient(rgba(202, 63, 251, 1), rgba(252, 105, 0, 1));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: all ease-in-out 0.2s;
-`;

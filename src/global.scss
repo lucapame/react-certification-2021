@@ -1,16 +1,9 @@
 /*----------------------Custom Variables-----------------------------------*/
 // Create your own map
-$custom-colors: (
-  'bg-black': #121212,
-  'bg-black-contrast': #353535,
-  'bg-light': #fff,
-  'bg-light-contrast': rgb(206, 206, 206),
-  'spring-green': #ff7d00,
-);
 
 $font-family-sans-serif: 'Rubik', sans-serif;
 
-$border-radius: 0.7rem;
+$border-radius: 0.5rem;
 $border-radius-lg: 0.5rem;
 $border-radius-sm: 0.3rem;
 
@@ -19,19 +12,36 @@ $enable-responsive-font-sizes: true;
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap');
 
+// Create your own map
+$custom-colors: (
+  'bg-black': #121212,
+  'bg-black-contrast': #353535,
+  'bg-light': #fff,
+  'bg-light-contrast': rgb(206, 206, 206),
+  'amber-sae-ece': #ff7d00,
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
 :root {
-  --bg-color: #f4f4f4;
-  --bg-transparent-color: #e3e3e3d2;
-  --bg-contrast-color: #e3e3e3;
+  --bg-color: #f6f6f6;
+  --bg-transparent-color: #e8e8e8d3;
+  --bg-contrast-color: #e8e8e8;
   --text-color: #000;
+  --text-negative-color: #000;
   --text-lead: #848484;
 
-  --brand-purple: #ca3ffb;
-  --amber-sae-ece: #ff7d00ff;
+  --color-primary: #054455;
+  --color-primary-contrast: #318585;
+  --color-secondary: #c84f53;
+  --color-secondary-contrast: #d9888b;
 
-  --border-radius: 0.7rem;
+  --border-radius: 0.5rem;
   --navbar-height: 8vh;
   --lh: 1.2rem;
+
+  --invert: 100%;
 }
 
 [data-theme='dark'] {
@@ -39,6 +49,11 @@ $enable-responsive-font-sizes: true;
   --bg-transparent-color: #39393bc2;
   --bg-contrast-color: #39393b;
   --text-color: #fff;
+  --text-negative-color: #000;
+
+  --color-primary: #03556b;
+
+  --invert: 0%;
 }
 
 html,
@@ -62,7 +77,7 @@ body {
 *::-webkit-scrollbar {
   width: 5px;
   height: 5px;
-  background-color: var(--bg-contrast-color);
+  background-color: var(--bg-color);
 }
 
 *::-webkit-scrollbar-thumb {
@@ -73,24 +88,27 @@ body {
 
 *::-webkit-scrollbar-thumb:hover {
   border-radius: 10px;
-  background-color: var(--amber-sae-ece);
+  background-color: var(--color-primary-contrast);
   transition: 0.3s;
 }
 
 *::-webkit-scrollbar-track {
   border-radius: $border-radius;
-  background-color: var(--bg-contrast-color);
+  background-color: var(--bg-color);
 }
 
 input,
 select,
 textarea {
+  background-color: var(--bg-contrast-color) !important;
   color: var(--text-color) !important;
+  border: none !important;
 }
 
 textarea:focus,
 input:focus {
   color: var(--text-color) !important;
+  background-color: var(--bg-contrast-color) !important;
 }
 
 .decoration-none {
@@ -139,5 +157,27 @@ input:focus {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
   }
 }

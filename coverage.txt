@@ -2,35 +2,9 @@
 > react-certification-2020@0.1.0 test C:\Users\luca-\Documents\GitHub\react-certification-2021
 > react-scripts test "--coverage"
 
-------------------------------------|----------|----------|----------|----------|-------------------|
-File                                |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
-------------------------------------|----------|----------|----------|----------|-------------------|
-All files                           |    61.82 |     30.3 |       50 |    62.39 |                   |
- components/App                     |        0 |      100 |        0 |        0 |                   |
-  App.component.jsx                 |        0 |      100 |        0 |        0 |                11 |
- components/Common/Navbar           |    53.85 |     37.5 |       25 |    53.85 |                   |
-  navbar.component.jsx              |    53.85 |     37.5 |       25 |    53.85 | 20,24,25,26,52,53 |
- components/Common/VideoCard        |      100 |      100 |      100 |      100 |                   |
-  video-card-flat.component.jsx     |      100 |      100 |      100 |      100 |                   |
-  video-card.component.jsx          |      100 |      100 |      100 |      100 |                   |
- components/Common/VideoCard/Styled |      100 |      100 |      100 |      100 |                   |
-  styled-components.js              |      100 |      100 |      100 |      100 |                   |
- components/Layout                  |        0 |        0 |        0 |        0 |                   |
-  Layout.component.jsx              |        0 |        0 |        0 |        0 |            6,8,10 |
- pages/Home                         |    83.33 |       75 |       80 |    83.33 |                   |
-  Home.page.jsx                     |    83.33 |       75 |       80 |    83.33 |             24,63 |
- pages/Home/Styled                  |      100 |      100 |      100 |      100 |                   |
-  styled-components.js              |      100 |      100 |      100 |      100 |                   |
- pages/VideoPlayer                  |     87.5 |    66.67 |       80 |     87.5 |                   |
-  Player.page.jsx                   |     87.5 |    66.67 |       80 |     87.5 |             37,76 |
- pages/VideoPlayer/Styled           |      100 |      100 |      100 |      100 |                   |
-  styled-components.js              |      100 |      100 |      100 |      100 |                   |
- utils                              |    77.27 |        0 |       80 |    77.27 |                   |
-  action-types.js                   |      100 |      100 |      100 |      100 |                   |
-  constants.js                      |      100 |      100 |      100 |      100 |                   |
-  helpers.js                        |      100 |      100 |      100 |      100 |                   |
-  store.jsx                         |    54.55 |        0 |       50 |    54.55 |      6,8,10,12,14 |
- utils/hooks                        |        0 |        0 |        0 |        0 |                   |
-  useYoutubeQuery.js                |        0 |        0 |        0 |        0 |... 54,57,60,61,64 |
-------------------------------------|----------|----------|----------|----------|-------------------|
+--------------------|----------|----------|----------|----------|-------------------|
+File                |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+--------------------|----------|----------|----------|----------|-------------------|
+All files           |    76.92 |       50 |       60 |    76.92 |                   |
+--------------------|----------|----------|----------|----------|-------------------|
 
